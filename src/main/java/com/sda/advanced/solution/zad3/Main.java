@@ -24,8 +24,14 @@ public class Main {
 	}
 
 	private static void print(Map<String, Integer> map) {
+		int i = 0;
 		for (Map.Entry<String, Integer> entry : map.entrySet()) {
-			System.out.println(entry.getKey() + " " + entry.getValue());
+			i = i + 1;
+			if(i == map.size()) {
+				System.out.println("Klucz: "+ entry.getKey() + ", Wartość: " + entry.getValue() + ".");
+			} else {
+				System.out.println("Klucz: "+ entry.getKey() + ", Wartość: " + entry.getValue() + ",");
+			}
 		}
 	}
 }
