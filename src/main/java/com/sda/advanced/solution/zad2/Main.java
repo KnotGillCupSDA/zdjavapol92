@@ -16,7 +16,17 @@ public class Main {
 
 	private static List<String> sortCaseInsensitive(List<String> unsorted) {
 		List<String> sorted = new ArrayList<>(unsorted);
-		sorted.sort((o1, o2) -> -o1.toLowerCase().compareTo(o2.toLowerCase()));
+		//1
+		//sorted.sort((o1, o2) -> -o1.toUpperCase().compareTo(o2.toUpperCase()));
+
+		//2
+		//sorted.sort(new MyReversedCaseInsensitiveComparator());
+
+		//3
+		//sorted.sort((o1, o2) -> -o1.compareToIgnoreCase(o2));
+
+		//4
+		sorted.sort(String.CASE_INSENSITIVE_ORDER.reversed());
 		return sorted;
 	}
 
