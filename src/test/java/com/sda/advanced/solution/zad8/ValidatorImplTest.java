@@ -17,7 +17,9 @@ class ValidatorImplTest {
 	@Test
 	void shouldReturnFalseWhenSumOfLengthsAbove300() {
 		//when
-		final boolean isValid = validator.validate(new Parcel());
+		final Parcel parcel = new Parcel(101, 101, 101, 1.0f, false);
+
+		final boolean isValid = validator.validate(parcel);
 
 		//then
 		assertFalse(isValid);
