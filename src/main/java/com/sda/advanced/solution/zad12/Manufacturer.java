@@ -7,7 +7,7 @@ public class Manufacturer {
     private final int foundedInYear;
     private final String countryOfOrigin;
 
-    public Manufacturer(String name, int foundedInYear, String countryOfOrigin) {
+    public Manufacturer(String name, String countryOfOrigin, int foundedInYear) {
         this.name = name;
         this.foundedInYear = foundedInYear;
         this.countryOfOrigin = countryOfOrigin;
@@ -39,4 +39,13 @@ public class Manufacturer {
     public int hashCode() {
         return Objects.hash(name, foundedInYear, countryOfOrigin);
     }
+
+	@Override
+	public String toString() {
+		return "Manufacturer{" +
+				"name='" + name + '\'' +
+				", foundedInYear=" + foundedInYear +
+				", countryOfOrigin='" + countryOfOrigin + '\'' +
+				'}';
+	}
 }
