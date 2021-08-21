@@ -51,8 +51,17 @@ public class CarService {
 	}
 
 	public Optional<Car> getMostExpensiveCar() {
-		return cars.stream()
-				.max(Comparator.comparingDouble(Car::getPrice));
+		Car max = null;
+		for (Car car : cars) {
+			if (max == null || car.getPrice() > max.getPrice()) {
+				max = car;
+			}
+		}
+		return Optional.ofNullable(max);
+	}
+
+	public Optional<Car> getMostExpensiveCarOnStream() {
+		return cars.stream().max(Comparator.comparingDouble(Car::getPrice));
 	}
 
 	public Optional<Car> getCheapestCar() {
