@@ -10,7 +10,7 @@ public class CircleWithRadius implements Circle {
 		this.radius = calculateRadius(center, point);
 	}
 
-	public double calculateRadius(Point2D center, Point2D point) {
+	private double calculateRadius(Point2D center, Point2D point) {
 		return Math.sqrt(
 				Math.pow(center.getX() - point.getX(), 2)
 						+ Math.pow(center.getY() - point.getY(), 2));
