@@ -1,11 +1,28 @@
 package com.sda.advanced.solution.zad28;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-public class SkipArrayList<E> extends ArrayList<E> {
+public class SkipArrayList<T> extends ArrayList<T> {
 
-	public List<E> getEveryNthElement(int startIndex, int skip) {
-		return null;
-	}
+    public SkipArrayList() {
+    }
+
+    public SkipArrayList(Collection<? extends T> c) {
+        super(c);
+    }
+
+    public List<T> getEveryNthElement(int startIndex, int skip) {
+
+        List<T> everyNthElement = new ArrayList<>();
+
+        int currentIndex = startIndex;
+        while (currentIndex < size()) {
+            everyNthElement.add(get(currentIndex));
+            currentIndex += skip + 1;
+        }
+
+        return everyNthElement;
+    }
 }
