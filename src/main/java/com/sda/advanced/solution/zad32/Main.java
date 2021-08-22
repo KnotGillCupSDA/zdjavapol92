@@ -13,7 +13,7 @@ public class Main {
 
 		final AbstractCarStorage carStorage = new SerializableCarStorage(Path.of("src", "main", "resources", "zad32"));
 
-		//carStorage.save(cars);
+		carStorage.save(cars);
 		List<Car> readCars = carStorage.load();
 
 		System.out.println(readCars);
