@@ -10,5 +10,7 @@ public class Main {
 		basket.removeFromBasket();
 		basket.removeFromBasket();
 		basket.removeFromBasket();
+
+		System.out.println("Still working");
 	}
 }
