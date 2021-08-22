@@ -1,31 +1,22 @@
 package com.sda.advanced.solution.zad32;
 
+import java.io.IOException;
 import java.nio.file.Path;
-import java.util.Collections;
 import java.util.List;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 
-		final List<Car> cars = List.of(new Car("Subaru", 200_000.0),
-				new Car("BMW", 233_000.0));
+		final List<Car> cars = List.of(new Car("Subaru", 200_000.0, true),
+				new Car("BMW", 233_000.0, false));
 
-		final Path file = Path.of("src", "main", "resources", "zad32", "cars.db");
+		final AbstractCarStorage carStorage = new SerializableCarStorage(Path.of("src", "main", "resources", "zad32"));
 
-		save(file, cars);
-
-		List<Car> readCars = load(file);
+		//carStorage.save(cars);
+		List<Car> readCars = carStorage.load();
 
 		System.out.println(readCars);
-	}
-
-	private static List<Car> load(Path file) {
-		return Collections.emptyList();
-	}
-
-	private static void save(Path file, List<Car> cars) {
-
 	}
 
 }
