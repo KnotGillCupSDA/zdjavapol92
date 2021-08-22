@@ -9,6 +9,8 @@ public class Main {
 
 		final Path rootDir = Path.of("src", "main", "resources", "zad33");
 
-		System.out.println(ImageFinder.findImages(rootDir));
+		System.out.println(RecursiveImageFinder.findImages(rootDir));
+		System.out.println(WalkingImageFinder.findImages(rootDir));
+		System.out.println(WalkingTreeImageFinder.findImages(rootDir));
 	}
 }
