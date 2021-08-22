@@ -1,4 +1,4 @@
-package com.sda.advanced.solution.zad39;
+package com.sda.advanced.fromthergroups.zad39;
 
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
