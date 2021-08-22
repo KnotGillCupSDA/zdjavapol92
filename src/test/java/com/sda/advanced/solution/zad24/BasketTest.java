@@ -18,6 +18,7 @@ class BasketTest {
 	void shouldBeAbleToAddAndRemoveFromBasket() {
 		basket.addToBasket();
 		basket.removeFromBasket();
+		basket.removeFromBasket();
 	}
 
 	@Test
@@ -27,6 +28,10 @@ class BasketTest {
 
 	@Test
 	void shouldThrowExceptionWhenTooManyItems() {
+		for (int i = 0; i < 10; i++) {
+			basket.addToBasket();
+		}
 
+		assertThrows(BasketFullException.class, () -> basket.addToBasket());
 	}
 }
