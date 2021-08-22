@@ -18,7 +18,6 @@ class BasketTest {
 	void shouldBeAbleToAddAndRemoveFromBasket() {
 		basket.addToBasket();
 		basket.removeFromBasket();
-		basket.removeFromBasket();
 	}
 
 	@Test
