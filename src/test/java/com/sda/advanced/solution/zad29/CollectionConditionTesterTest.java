@@ -10,22 +10,17 @@ import org.junit.jupiter.api.Test;
 
 import com.sda.advanced.solution.zad12.Car;
 import com.sda.advanced.solution.zad12.Manufacturer;
-import com.sda.advanced.solution.zad13.CarService;
 
 class CollectionConditionTesterTest {
 
-	private CarService carService;
 	private Manufacturer fiat;
 	private Manufacturer mercedes;
 	private Manufacturer porsche;
-	private Manufacturer tesla;
 	private Manufacturer benz;
 	private Car panda;
 	private Car sclass;
 	private Car sclass2;
 	private Car cayenne;
-	private Car boxter;
-	private Car eclass;
 
 	@BeforeEach
 	void setUp() {
@@ -33,7 +28,6 @@ class CollectionConditionTesterTest {
 		fiat = new Manufacturer("Fiat", "Italy", 1900);
 		mercedes = new Manufacturer("Manufacturer", "Germany", 1901);
 		porsche = new Manufacturer("Porsche", "Germany", 1950);
-		tesla = new Manufacturer("Tesla", "USA", 2010);
 		benz = new Manufacturer("Benz", "Germany", 1901);
 
 		panda = new Car("Panda", "Fiat", 40000, 2011, Collections.singletonList(fiat), Car.EngineType.S4);
@@ -44,7 +38,6 @@ class CollectionConditionTesterTest {
 
 	@Test
 	void shouldCalculatePercentage() {
-
 		final List<Car> panda = List.of(this.panda, sclass, sclass2, cayenne);
 		assertEquals(50.0,
 				CollectionConditionTester.partOf(panda,
@@ -53,6 +46,5 @@ class CollectionConditionTesterTest {
 		final List<Integer> integers = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 		assertEquals(25.0,
 				CollectionConditionTester.partOf(integers, i -> i >= 7));
-
 	}
 }
