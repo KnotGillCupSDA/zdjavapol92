@@ -8,7 +8,7 @@ public class Basket {
 
 	void removeFromBasket() {
 		/*if() {
-			throw new BasketEmptyException("Cant remove from empty basket");
+			throw new BasketEmptyException("Can't remove from empty basket");
 		}*/
 	}
 }
