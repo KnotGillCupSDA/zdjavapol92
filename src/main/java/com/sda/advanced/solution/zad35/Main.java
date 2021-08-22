@@ -7,7 +7,7 @@ public class Main {
         thread.start();
 		Thread thread2 = new Thread(new MyRunnable());
 		thread2.start();
-		Thread thread3 = new Thread(new MyRunnable());
+		Thread thread3 = new Thread(() -> System.out.println(Thread.currentThread().getName()));
 		thread3.start();
 		thread3.join();
 		System.out.println(Thread.currentThread().getName());
