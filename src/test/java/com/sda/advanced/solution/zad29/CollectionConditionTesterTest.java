@@ -38,9 +38,10 @@ class CollectionConditionTesterTest {
 
 	@Test
 	void shouldCalculatePercentage() {
-		final List<Car> panda = List.of(this.panda, sclass, sclass2, cayenne);
+		final List<Car> cars = List.of(panda, sclass, sclass2, cayenne);
+
 		assertEquals(50.0,
-				CollectionConditionTester.partOf(panda,
+				CollectionConditionTester.partOf(cars,
 						c -> c.getManufacturers().size() > 1));
 
 		final List<Integer> integers = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
