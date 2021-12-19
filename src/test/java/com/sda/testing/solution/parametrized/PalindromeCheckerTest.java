@@ -1,20 +1,20 @@
 package com.sda.testing.solution.parametrized;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class PalindromeCheckerTest {
 
-	@Test
-	void shouldBeVerifiedAsPalindrome() {
-		//given
-		String palindrome = "sedes";
-
+	@ParameterizedTest
+	//@ValueSource(strings = {"sedes","kajak"} )
+	@CsvSource({"sedes, true","kajak, true", "costam, false"})
+	void shouldVerifyWords(String word, boolean expected) {
 		//when
-		boolean actual = PalindromeChecker.isPalindrome(palindrome);
+		boolean actual = PalindromeChecker.isPalindrome(word);
 
 		//then
-		assertTrue(actual);
+		assertEquals(expected, actual);
 	}
 }
