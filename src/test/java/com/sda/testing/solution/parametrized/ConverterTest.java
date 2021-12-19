@@ -1,13 +1,18 @@
 package com.sda.testing.solution.parametrized;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.List;
 import java.util.Random;
 import java.util.stream.Stream;
 
+import org.assertj.core.data.Offset;
+import org.assertj.core.data.Percentage;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.EnumSource;
@@ -116,5 +121,19 @@ public class ConverterTest {
 						new Random().nextInt()
 				)
 		);
+	}
+
+
+	@Test
+	void precisionHandling() {
+
+		double initialValue = 10.0;
+		double convert = converter.convert(initialValue, ConversionType.YARDS_TO_METERS);
+		double finalValue = converter.convert(convert, ConversionType.METERS_TO_YARDS);
+
+		assertThat(finalValue)
+				.isCloseTo(initialValue, Offset.offset(0.1));
+		assertThat(finalValue)
+				.isCloseTo(initialValue, Percentage.withPercentage(0.1));
 	}
 }
