@@ -1,16 +1,15 @@
 package com.sda.testing.solution.parametrized;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
-class DivisibilityCheckerTest {
+public class DivisibilityCheckerTest {
 
-	@Test
-	void shouldBeDivisibleBy3() {
-		//given
-		int i = 9;
-
+	@ParameterizedTest
+	@ValueSource(ints = {9, 6, -6, 0})
+	void shouldBeDivisibleBy3(int i) {
 		//when
 		boolean actual = DivisibilityChecker.isDivisibleBy3(i);
 
