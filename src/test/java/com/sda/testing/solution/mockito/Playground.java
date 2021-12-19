@@ -14,6 +14,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -26,7 +28,10 @@ import com.sda.advanced.solution.zad17.Converter;
 public class Playground {
 
 	@Mock
-	private static Converter converter;
+	private Converter converter;
+
+	@Captor
+	private ArgumentCaptor<Double> doubleArgumentCaptor;
 
 	@ParameterizedTest
 	@MethodSource("converters")
@@ -53,5 +58,20 @@ public class Playground {
 				//converter,
 				spy
 		);
+	}
+
+	@Test
+	void captorPlayground() {
+		ArgumentCaptor<Double> doubleArgumentCaptor2 = ArgumentCaptor.forClass(Double.class);
+
+		when(converter.convert(doubleArgumentCaptor.capture(), any(ConversionType.class)))
+				.thenReturn(8.0);
+
+		System.out.println(converter.convert(18.0, ConversionType.CENTIMETERS_TO_INCHES));
+		System.out.println(converter.convert(5.0, ConversionType.CENTIMETERS_TO_INCHES));
+
+		System.out.println(doubleArgumentCaptor.getValue());
+		System.out.println(doubleArgumentCaptor.getAllValues());
+
 	}
 }
