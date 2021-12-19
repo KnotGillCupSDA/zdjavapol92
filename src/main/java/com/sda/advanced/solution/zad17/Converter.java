@@ -13,6 +13,7 @@ public class Converter {
 	}
 
 	public double convert(double value, ConversionTypeWithFunction conversionType) {
+		System.out.println("akuku");
 		return conversionType.getConversionFunction().apply(value);
 	}
 }
