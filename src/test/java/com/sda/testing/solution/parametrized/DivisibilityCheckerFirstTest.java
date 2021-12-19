@@ -4,6 +4,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+/**
+ * The first test class - without parametrization
+ * We can clearly see that the class is getting bigger and bigger after each test case
+ * Can be solved by parametrization
+ */
 class DivisibilityCheckerFirstTest {
 
 	@Test
