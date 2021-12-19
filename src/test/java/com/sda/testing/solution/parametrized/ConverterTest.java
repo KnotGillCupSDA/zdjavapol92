@@ -1,15 +1,21 @@
 package com.sda.testing.solution.parametrized;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Random;
+import java.util.stream.Stream;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.EnumSource;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import com.sda.advanced.solution.zad17.ConversionType;
+import com.sda.advanced.solution.zad17.ConversionTypeWithFunction;
 import com.sda.advanced.solution.zad17.Converter;
 
 public class ConverterTest {
@@ -37,5 +43,52 @@ public class ConverterTest {
 	void someOperationsShouldConvertToHigherValue(ConversionType conversionType) {
 		int i = new Random().nextInt(1000);
 		assertTrue(converter.convert(i, conversionType) > i);
+	}
+
+	@ParameterizedTest
+	@MethodSource("conversionTypePairs")
+	void someOperationsShouldBeReversible(ConversionTypeWithFunction conversionType1,
+			ConversionTypeWithFunction conversionType2,
+			double initialValue,
+			Converter converter,
+			String errorMessage) {
+
+		double convert = converter.convert(initialValue, conversionType1);
+		double finalValue = converter.convert(convert, conversionType2);
+
+		assertEquals(initialValue, finalValue, errorMessage);
+	}
+
+	public static Stream<Arguments> conversionTypePairs() {
+		return Stream.of(
+				Arguments.of(
+						ConversionTypeWithFunction.YARDS_TO_METERS,
+						ConversionTypeWithFunction.METERS_TO_YARDS,
+						10.0,
+						new Converter(),
+						"Should be reversible"
+				),
+				Arguments.of(
+						ConversionTypeWithFunction.INCHES_TO_CENTIMETERS,
+						ConversionTypeWithFunction.CENTIMETERS_TO_INCHES,
+						10.0,
+						new Converter(),
+						"Should be reversible"
+				),
+				Arguments.of(
+						ConversionTypeWithFunction.INCHES_TO_CENTIMETERS,
+						ConversionTypeWithFunction.CENTIMETERS_TO_INCHES,
+						100214321321.0,
+						new Converter(),
+						"Should be reversible"
+				),
+				Arguments.of(
+						ConversionTypeWithFunction.MILES_TO_KILOMETERS,
+						ConversionTypeWithFunction.KILOMETERS_TO_MILES,
+						10.0,
+						new Converter(),
+						"Should be reversible"
+				)
+		);
 	}
 }
