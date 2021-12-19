@@ -10,7 +10,7 @@ class PalindromeCheckerTest {
 
 	@ParameterizedTest
 	//@ValueSource(strings = {"sedes","kajak"} )
-	@CsvSource({"sedes, true","kajak, true", "costam, false"})
+	@CsvSource({"sedes, true","kajak, true", "costam, false", "kobyla ma maly bok, true"})
 	void shouldVerifyWords(String word, boolean expected) {
 		//when
 		boolean actual = PalindromeChecker.isPalindrome(word);
