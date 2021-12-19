@@ -36,5 +36,13 @@ public class RomanNumeralConverter {
             this.arabic = arabic;
             this.roman = roman;
         }
-    }
+
+		public int getArabic() {
+			return arabic;
+		}
+
+		public String getRoman() {
+			return roman;
+		}
+	}
 }
